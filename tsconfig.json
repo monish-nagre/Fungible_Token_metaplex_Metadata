@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",    // Use CommonJS module system
+    "target": "ES6",         // Target ES6 for modern features
+    "outDir": "./dist"       // Specify where compiled JavaScript files will be placed
+  }
+}
