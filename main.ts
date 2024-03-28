@@ -15,15 +15,16 @@ export function loadWalletKey(keypairFile:string): web3.Keypair {
 
 const INITIALIZE = true;
 // /Mon9P9yMX8VSoVQDk61hSYpFFZzZDnwcumKmfVq42tt
+// ts-node main.ts ( run );
 async function main(){
     console.log("let's name some tokens!");
     const myKeypair = loadWalletKey("/home/monish/.config/solana/id.json");
     console.log(myKeypair.publicKey.toBase58())
-    const mint = new web3.PublicKey("FUNWwYoCfQ7r9sc9S5ua7S1cBxBdFmhWp7JHCWypSwVy");
+    const mint = new web3.PublicKey("7iYPG4qT3nZzS2NVaDBSBSAZ1vtZWvGKeyDwEPmbPA7i");  // token address -> chg
     const seed1 = Buffer.from(anchor.utils.bytes.utf8.encode("metadata"));
     const seed2 = Buffer.from(mpl.PROGRAM_ID.toBytes());
     const seed3 = Buffer.from(mint.toBytes());
-    const signer = new PublicKey ("38J8f4VG8syxqWmRsYt8pbFf8Edeh1hoPvAuBnF4Vp6U")
+    const signer = new PublicKey ("38J8f4VG8syxqWmRsYt8pbFf8Edeh1hoPvAuBnF4Vp6U")  // owner of token and signer also in terminal (payer)
     const [metadataPDA, _bump] = web3.PublicKey.findProgramAddressSync([seed1, seed2, seed3], mpl.PROGRAM_ID);
     const accounts = {
         metadata: metadataPDA,
@@ -33,9 +34,9 @@ async function main(){
         updateAuthority: signer,
     }
     const dataV2 = {
-        name: "Fake USD Token",
-        symbol: "FUD",
-        uri: "https://shdw-drive.genesysgo.net/ArP7jjhVZsp7vkzteU7mpKA1fyHRhv4ZBz6gR7MJ1JTC/metadata.json",
+        name: "Monish Custom Token",
+        symbol: "MCT",
+        uri: "https://ipfs.io/ipfs/QmWAUsw1HMVQMq7Rq14gxdFaPPxoQzTbs73JNkGEPCxkCb",
         // we don't need that
         sellerFeeBasisPoints: 0,
         creators: null,
